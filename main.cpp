@@ -29,6 +29,7 @@
 
 #include <QCoreApplication>
 
+#include "Job.h"
 #include "YamlUtils.h"
 
 int main(int argc, char **argv)
@@ -41,6 +42,9 @@ int main(int argc, char **argv)
         QVariantMap map = CalamaresUtils::loadYaml( argv[1], &ok );
         if ( ok )
         {
+            Job j;
+            j.setConfigurationMap( map );
+            j.debug();
             return 0;
         }
         else

@@ -31,6 +31,9 @@ find_package( YAMLCPP ${YAMLCPP_VERSION} REQUIRED )
 #
 add_executable( ydd 
     main.cpp 
+    ChoiceItem.cpp
+    ChoiceGroup.cpp
+    Job.cpp
     YamlUtils.cpp
     )
 target_include_directories( ydd
