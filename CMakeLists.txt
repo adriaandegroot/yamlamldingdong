@@ -31,6 +31,11 @@ find_package( YAMLCPP ${YAMLCPP_VERSION} REQUIRED )
 #
 add_executable( ydd 
     main.cpp 
+    YamlUtils.cpp
+    )
+target_include_directories( ydd
+    PRIVATE
+    ${YAMLCPP_INCLUDE_DIR}
     )
 target_link_libraries( ydd
     Qt5::Core

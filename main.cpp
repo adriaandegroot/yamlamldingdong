@@ -1,7 +1,7 @@
 /*
  * Copyright 2018, Adriaan de Groot <groot@kde.org>
  * 
- * This file is part of YAMLAMLDINGDONG (here,after YDD).
+ * This file is part of YAMLAMLDINGDONG (hereafter YDD).
  * 
  *   YDD is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -29,14 +29,28 @@
 
 #include <QCoreApplication>
 
+#include "YamlUtils.h"
+
 int main(int argc, char **argv)
 {
     QCoreApplication a( argc, argv );
 
     if ( argc == 2 )
-        return 0;
+    {
+        bool ok = true;
+        QVariantMap map = CalamaresUtils::loadYaml( argv[1], &ok );
+        if ( ok )
+        {
+            return 0;
+        }
+        else
+        {
+            std::cerr << "Could not load " << argv[1] << std::endl;
+            return 1;
+        }
+    }
         
-    std::cerr << "Usage:" << argv[0] << "<filename>\n\n"
+    std::cerr << "Usage: " << argv[0] << " <filename>\n\n"
         << "Parses YAML document <filename> and does stuff with it.\n";
         
     return 1;
