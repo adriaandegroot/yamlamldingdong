@@ -26,3 +26,14 @@ set( YAMLCPP_VERSION 0.5.1 )
 find_package( Qt5 ${QT_VERSION} CONFIG REQUIRED Core Gui Widgets )
 find_package( YAMLCPP ${YAMLCPP_VERSION} REQUIRED )
 
+### YDD itself
+#
+#
+add_executable( ydd 
+    main.cpp 
+    )
+target_link_libraries( ydd
+    Qt5::Core
+    ${YAMLCPP_LIBRARY}
+    )
+    
