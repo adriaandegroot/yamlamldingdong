@@ -38,9 +38,9 @@ ListQVM::ListQVM(QVariantMap q) :
 
 void ListQVM::getKeys(QVariantMap& map) {
 
-    QVariant top =  map["contents"].toList()[0];
+    QVariant top =  map["choices"].toList()[0];
 
-    qDebug() << top.toString();
+    qDebug() << top;
 
 
 }
