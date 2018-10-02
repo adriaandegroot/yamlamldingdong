@@ -35,6 +35,7 @@ add_executable( ydd
     ChoiceGroup.cpp
     Job.cpp
     YamlUtils.cpp
+    ListQVM.cpp
     )
 target_include_directories( ydd
     PRIVATE
