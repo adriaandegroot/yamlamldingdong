@@ -20,8 +20,11 @@
 
 #include <QVariantMap>
 #include <QVariantList>
+#include <QList>
 #include <QString>
 #include <QDebug>
+#include <QMapIterator>
+
 
 // This class is temporary at the moment, just for the sake of opening and
 // listing the contents of the QVariantMap.
@@ -38,9 +41,19 @@ ListQVM::ListQVM(QVariantMap q) :
 
 void ListQVM::getKeys(QVariantMap& map) {
 
-    QVariant top =  map["choices"].toList()[0];
+    QList<QString> firstLevel = map.keys();
+    QString key1 = firstLevel[0]; // will be "choices"
 
-    qDebug() << top;
+    qDebug() << key1;
 
+    QList<QVariant> key2 = map.values(key1);
+
+    // stolen from Qt docs
+    QList<QVariant>::const_iterator q;
+    for (q = key2.constBegin(); q != key2.constEnd(); ++q)
+        qDebug() << *q;
+
+    // TODO: it spews out the contents of the QVM, beginning one level
+    // below "choices". Not sure how to get the hierarchy. But it's something.
 
 }
