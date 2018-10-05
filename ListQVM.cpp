@@ -41,19 +41,30 @@ ListQVM::ListQVM(QVariantMap q) :
 
 void ListQVM::getKeys(QVariantMap& map) {
 
-    QList<QString> firstLevel = map.keys();
-    QString key1 = firstLevel[0]; // will be "choices"
+    QVariantList theChoices = map["choices"].toList();
 
-    qDebug() << key1;
-
-    QList<QVariant> key2 = map.values(key1);
-
-    // stolen from Qt docs
-    QList<QVariant>::const_iterator q;
-    for (q = key2.constBegin(); q != key2.constEnd(); ++q)
-        qDebug() << *q;
-
-    // TODO: it spews out the contents of the QVM, beginning one level
-    // below "choices". Not sure how to get the hierarchy. But it's something.
-
+   //qDebug() << theChoices;
+   
+   for ( auto it : theChoices )
+		{
+			// each item in the list should be a map in its own right
+			QVariantMap choiceGroup = it.toMap();
+			// do something with that "inner" map
+            
+            qDebug() << choiceGroup["title"];
+            
+            for ( auto it : theChoices )
+		{
+			// each item in the list should be a map in its own right
+			QVariantMap choiceGroup = it.toMap();
+			// do something with that "inner" map
+            
+                qDebug() << "choiceGroup " << choiceGroup["title"];
+                qDebug() << "again " << choiceGroup["items"];
+                
+               
+	}
+            
+}       
+   
 }
