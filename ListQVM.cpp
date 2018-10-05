@@ -48,23 +48,32 @@ void ListQVM::getKeys(QVariantMap& map) {
    for ( auto it : theChoices )
 		{
 			// each item in the list should be a map in its own right
-			QVariantMap choiceGroup = it.toMap();
 			// do something with that "inner" map
             
-            qDebug() << choiceGroup["title"];
+           // qDebug() << "Choice Group: " << it;
             
-            for ( auto it : theChoices )
-		{
-			// each item in the list should be a map in its own right
-			QVariantMap choiceGroup = it.toMap();
-			// do something with that "inner" map
+            QVariantMap nextMap = it.toMap();
             
-                qDebug() << "choiceGroup " << choiceGroup["title"];
-                qDebug() << "again " << choiceGroup["items"];
+            
+            
+            QVariant title = nextMap["title"];
+            QVariant variable = nextMap["variable"];
+            qDebug() << "title: " << title.toString();
+            qDebug() << "variable: " << variable.toString();
+            
+            qDebug() << "nextMap " << nextMap;
+            
+            QVariantList nameList = nextMap["items"].toList();
+            
+            
+            for (auto item2 : nameList) {
                 
-               
-	}
+                QVariantMap moreItems = item2.toMap();
+                
+                qDebug() << "item2List " << moreItems;
             
-}       
+           
    
+}
+}
 }
