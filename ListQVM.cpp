@@ -73,7 +73,6 @@ void ListQVM::getKeys(QVariantMap& map) {
                 qDebug() << "item2List " << moreItems;
             
            
-   
-}
-}
+            }
+        }
 }
