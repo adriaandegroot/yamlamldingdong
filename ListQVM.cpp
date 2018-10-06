@@ -50,12 +50,16 @@ void ListQVM::getKeys(QVariantMap& map) {
 			// each item in the list should be a map in its own right
 			// do something with that "inner" map
             
-           // qDebug() << "Choice Group: " << it;
-            
             QVariantMap nextMap = it.toMap();
             
+            // this should be one of the keys in nextMap, based on it.toMap()
+            // nextMap has the key "items", but I can't seem to get it out
+            QVariantList nextList = nextMap["items"].toList();
             
+            qDebug() << "nextList " << nextList;
             
+            // title & variable seem to be "loose" variables in the QVM
+            // webbrowser & shell
             QVariant title = nextMap["title"];
             QVariant variable = nextMap["variable"];
             qDebug() << "title: " << title.toString();
@@ -63,16 +67,16 @@ void ListQVM::getKeys(QVariantMap& map) {
             
             qDebug() << "nextMap " << nextMap;
             
-            QVariantList nameList = nextMap["items"].toList();
-            
-            
-            for (auto item2 : nameList) {
+        
+            // nextList always ends up empty, no matter what key I try to use on
+            // line 57 to extract from nextMap
+            for (auto item2 : nextList) {
                 
                 QVariantMap moreItems = item2.toMap();
                 
-                qDebug() << "item2List " << moreItems;
-            
-           
-            }
+                qDebug() << "moreitems " << moreItems;
+                
+
+                }
         }
 }
