@@ -43,40 +43,42 @@ void ListQVM::getKeys(QVariantMap& map) {
 
     QVariantList theChoices = map["choices"].toList();
 
-   //qDebug() << theChoices;
-   
-   for ( auto it : theChoices )
-		{
-			// each item in the list should be a map in its own right
-			// do something with that "inner" map
-            
-            QVariantMap nextMap = it.toMap();
-            
-            // this should be one of the keys in nextMap, based on it.toMap()
-            // nextMap has the key "items", but I can't seem to get it out
-            QVariantList nextList = nextMap["items"].toList();
-            
-            qDebug() << "nextList " << nextList;
-            
-            // title & variable seem to be "loose" variables in the QVM
-            // webbrowser & shell
-            QVariant title = nextMap["title"];
-            QVariant variable = nextMap["variable"];
-            qDebug() << "title: " << title.toString();
-            qDebug() << "variable: " << variable.toString();
-            
-            qDebug() << "nextMap " << nextMap;
-            
+   for (auto tm : theChoices) {
+       
+       QVariantMap topMap = tm.toMap();
+     
+        QMapIterator<QString, QVariant> choice(topMap);
+            while (choice.hasNext()) {
+                choice.next();
+                
+                // skip "items" as we're going to pull them as a separate list
+                if (choice.key() == "items") {
+                    choice.next();
+                }                
+                qDebug() << choice.key() << ": " << choice.value().toString();
+                
+            }
         
-            // nextList always ends up empty, no matter what key I try to use on
-            // line 57 to extract from nextMap
-            for (auto item2 : nextList) {
+        QVariantList itemList = topMap["items"].toList();
+        
+        for (auto im : itemList) {
+        
+           QVariantMap itemMap = im.toMap();
+            
+             QMapIterator<QString, QVariant> item(itemMap);
+                while (item.hasNext()) {
+                item.next();
+                qDebug() << item.key() << ": " << item.value().toString();
                 
-                QVariantMap moreItems = item2.toMap();
-                
-                qDebug() << "moreitems " << moreItems;
-                
-
-                }
+            }
         }
+       
+       // visual break between "choices"
+       qDebug() << "---------";
+    
+    }
 }
+
+
+
+
