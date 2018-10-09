@@ -59,16 +59,15 @@ void ListQVM::getKeys(QVariantMap& map) {
                 
             }
         
+        qDebug() << "items:";
         QVariantList itemList = topMap["items"].toList();
-        
         for (auto im : itemList) {
-        
-           QVariantMap itemMap = im.toMap();
-            
+             qDebug() << " -"; 
+             QVariantMap itemMap = im.toMap();
              QMapIterator<QString, QVariant> item(itemMap);
                 while (item.hasNext()) {
                 item.next();
-                qDebug() << item.key() << ": " << item.value().toString();
+                qDebug() << "  " << item.key() << ": " << item.value().toString();
                 
             }
         }
