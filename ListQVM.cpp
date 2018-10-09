@@ -53,7 +53,7 @@ void ListQVM::getKeys(QVariantMap& map) {
                 
                 // skip "items" as we're going to pull them as a separate list
                 if (choice.key() == "items") {
-                    choice.next();
+                    continue;
                 }                
                 qDebug() << choice.key() << ": " << choice.value().toString();
                 
