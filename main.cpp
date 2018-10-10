@@ -32,7 +32,7 @@
 #include "Job.h"
 #include "YamlUtils.h"
 
-#include "ListQVM.h"
+#include "ChoiceGroup.h"
 
 int main(int argc, char **argv)
 {
@@ -48,8 +48,10 @@ int main(int argc, char **argv)
             j.setConfigurationMap( map );
             j.debug();
 
-            ListQVM q(map);
-
+            //ChoiceGroup cg;
+            
+            
+            
             return 0;
         }
         else

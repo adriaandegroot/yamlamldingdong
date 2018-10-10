@@ -18,14 +18,29 @@
  * 
  *   SPDX-License-Identifier: GPLv3+
  */
+#include <iostream>
 #include "ChoiceGroup.h"
+#include <QDebug>
 
 ChoiceGroup::ChoiceGroup()
 {
 }
 
-ChoiceGroup::ChoiceGroup( const QVariantMap& )
+ChoiceGroup::ChoiceGroup( const QVariantMap& initMap)
 {
-    // Extract title
+    // Extract title & variable
+   
+    QString m_title = initMap["title"].toString();
+    QString m_variable = initMap["variable"].toString();
+    
     // Extract list of items
+    // *** I know how to extract them; unsure how to store them
+}
+
+QString ChoiceGroup::getTitle() {
+    return m_title;
+}
+
+QString ChoiceGroup::getVariable() {
+    return m_variable;
 }

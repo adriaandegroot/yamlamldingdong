@@ -30,13 +30,20 @@ class QWidget;
  */
 class ChoiceGroup
 {
+    
+    
 public:
     ChoiceGroup();
-    ChoiceGroup( const QVariantMap& );
+    ChoiceGroup( const QVariantMap& initMap);
+    
+    QString getTitle();
+    QString getVariable();
 
     // QWidget *makeWidget( QWidget *parent );
     
 private:
     QString m_title;
+    QString m_variable;
+    
     // and a list of vector of ChoiceItems
 } ;
