@@ -21,8 +21,11 @@
 
 class QWidget;
 
+#include <QList>
 #include <QString>
 #include <QVariantMap>
+
+#include "ChoiceItem.h"
 
 /** @brief Data class for a group of related choices
  * 
@@ -44,6 +47,6 @@ public:
 private:
     QString m_title;
     QString m_variable;
-    
-    // and a list of vector of ChoiceItems
+
+    QList<ChoiceItem> m_items;
 } ;
