@@ -22,25 +22,32 @@
 #include "ChoiceGroup.h"
 #include <QDebug>
 
+
+// invalid constructor (so why do we include it?)
 ChoiceGroup::ChoiceGroup()
 {
-}
+}                                                                                                                               
 
-ChoiceGroup::ChoiceGroup( const QVariantMap& initMap)
-{
-    // Extract title & variable
-   
-    QString m_title = initMap["title"].toString();
-    QString m_variable = initMap["variable"].toString();
+
+ChoiceGroup::ChoiceGroup(const QVariantMap& map) :
+
+    m_title(getStringValue(map, "title")),
+    m_variable(getStringValue(map, "variable"))
     
-    // Extract list of items
-    // *** I know how to extract them; unsure how to store them
-}
-
-QString ChoiceGroup::getTitle() {
-    return m_title;
-}
-
-QString ChoiceGroup::getVariable() {
-    return m_variable;
+{
+    if (map.contains("items") && map["items"].canConvert(<QVariantList>()) {
+        QVariantList items = map["items"].toList();
+        
+        for (const auto& item : items) {
+            
+            // check that item: is it a really a map?
+            
+            QVariantMap map_from_item;
+            
+            m_items.append(ChoiceItem(map_from_item));
+        }
+    }
+    
+    // validity checking (very condensed and efficient)
+    m_valid = !m_title.isEmpty() && !items.isEmpty();
 }

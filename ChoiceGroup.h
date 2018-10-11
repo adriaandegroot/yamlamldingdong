@@ -24,22 +24,30 @@ class QWidget;
 #include <QString>
 #include <QVariantMap>
 
+ // grab the value of (k) from map (m), otherwise return zilch, which will trigger an error
+    static QString getStringValue(const QVariantMap& m, const QString& k)
+    {
+        if (m.contains(k)) {
+            return m[k].toString();
+        } else {
+            return QString();
+        }
+    }
+
 /** @brief Data class for a group of related choices
  * 
  * Created from a variant map which is extracted from YAML.
  */
-class ChoiceGroup
-{
-    
-    
-public:
-    ChoiceGroup();
-    ChoiceGroup( const QVariantMap& initMap);
-    
-    QString getTitle();
-    QString getVariable();
 
-    // QWidget *makeWidget( QWidget *parent );
+class ChoiceGroup
+
+{
+
+public:
+    
+    ChoiceGroup();
+    
+    ChoiceGroup(const QVariantMap&);
     
 private:
     QString m_title;

@@ -20,6 +20,7 @@
  */
 
 #include <QVariantMap>
+#include <QVariantList>
 
 /** @brief Dummy class
  * 
@@ -30,6 +31,8 @@ class Job
 {
 public:
     Job();
+    
+    QVariantList m_choices;
     
     /** @brief Fill up the job's configuration with groups.
      */

@@ -32,29 +32,15 @@ void
 Job::setConfigurationMap( const QVariantMap& map )
 {
     
-    
-    
     QVariantList choiceList = map["choices"].toList();
-    for (auto im : choiceList) {
-        QVariantMap itemMap = im.toMap();
-        // initializes ChoiceGroup and pulls out title and variable
-        ChoiceGroup cg(itemMap);
+
+    for (auto it : choiceList) {
         
-        QVariantList itemsList = itemMap["items"].toList();
-        for ( auto items : itemsList ) {
-         
-            QVariantMap itemMap = items.toMap();
-           
-            // next step will be going through "itemMap" to get the "next level"
-            // of items, be they shell names or more complex app entries
-                
-                
-            }
-            
-        }
+        QVariantMap choiceMap = it.toMap();
         
+        m_choices.append(ChoiceGroup(choiceMap));
         
-    }
+}
     
 
 
