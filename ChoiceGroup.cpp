@@ -20,6 +20,7 @@
  */
 #include <iostream>
 #include "ChoiceGroup.h"
+#include "ChoiceItem.h"
 #include <QDebug>
 
 
@@ -35,7 +36,7 @@ ChoiceGroup::ChoiceGroup(const QVariantMap& map) :
     m_variable(getStringValue(map, "variable"))
     
 {
-    if (map.contains("items") && map["items"].canConvert(<QVariantList>()) {
+    if (map.contains("items") && map["items"].canConvert<QVariantList>()) {
         QVariantList items = map["items"].toList();
         
         for (const auto& item : items) {
@@ -44,10 +45,10 @@ ChoiceGroup::ChoiceGroup(const QVariantMap& map) :
             
             QVariantMap map_from_item;
             
-            m_items.append(ChoiceItem(map_from_item));
+            QStringList(append(ChoiceItem(map_from_item)));
         }
     }
     
     // validity checking (very condensed and efficient)
-    m_valid = !m_title.isEmpty() && !items.isEmpty();
+    m_isValid = !m_title.isEmpty() && !m_items.isEmpty();
 }

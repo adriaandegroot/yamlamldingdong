@@ -38,11 +38,12 @@ Job::setConfigurationMap( const QVariantMap& map )
         
         QVariantMap choiceMap = it.toMap();
         
-        m_choices.append(ChoiceGroup(choiceMap));
+        //m_choices.append(ChoiceGroup(choiceMap));
         
-}
+    }
     
 
+}
 
 void
 Job::debug() const

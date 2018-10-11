@@ -23,8 +23,11 @@ class QWidget;
 
 #include <QString>
 #include <QVariantMap>
+#include <QStringList>
 
- // grab the value of (k) from map (m), otherwise return zilch, which will trigger an error
+
+/* 
+// grab the value of (k) from map (m), otherwise return zilch, which will trigger an error
     static QString getStringValue(const QVariantMap& m, const QString& k)
     {
         if (m.contains(k)) {
@@ -33,6 +36,7 @@ class QWidget;
             return QString();
         }
     }
+*/
 
 /** @brief Data class for a group of related choices
  * 
@@ -52,6 +56,8 @@ public:
 private:
     QString m_title;
     QString m_variable;
+    QStringList m_items;
+    bool m_isValid;
     
     // and a list of vector of ChoiceItems
 } ;
