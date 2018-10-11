@@ -39,15 +39,12 @@ class QWidget;
         }
     }
 
-
-
+    
 class ChoiceItem
 {
 public:
     ChoiceItem();
     ChoiceItem( const QVariantMap& );
-    bool isValid();
-
     
 private:
     QVariantList m_items;

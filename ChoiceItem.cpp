@@ -36,9 +36,6 @@ ChoiceItem::ChoiceItem(const QVariantMap& map) :
     m_package(getStringValue(map, "package")),
     m_name(getStringValue(map, "name"))
     
-    
-    
-    
 {
     qDebug() << "   - item: " << m_item;
     qDebug() << "   - icon: " << m_icon;
@@ -65,6 +62,4 @@ ChoiceItem::ChoiceItem(const QVariantMap& map) :
     }
 }
 
-bool ChoiceItem::isValid() {
-    return m_isValid;
-}
+

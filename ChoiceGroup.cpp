@@ -23,23 +23,18 @@
 #include "ChoiceItem.h"
 #include <QDebug>
 
-
 // invalid constructor (so why do we include it?)
 ChoiceGroup::ChoiceGroup()
 {
 }                                                                                                                               
-
 
 ChoiceGroup::ChoiceGroup(const QVariantMap& map) :
 
     m_title(getStringValue(map, "title")),
     m_variable(getStringValue(map, "variable"))
     
-    
-    
 {
    
-    
     qDebug() << "TITLE: " << m_title;
     qDebug() << "VARIABLE: " << m_variable;
     
@@ -47,21 +42,21 @@ ChoiceGroup::ChoiceGroup(const QVariantMap& map) :
     if (map.contains("items") && map["items"].canConvert<QVariantList>()) {
         QVariantList items = map["items"].toList();
 
-        
         for (const auto& item : items) {
-            
-            // check that item: is it a really a map?
             
             QVariantMap map_from_item =item.toMap(); 
             
-          
+            // "append" was here in the email... append to what?
+            // the ChoiceItem is several data types in one...?
             ChoiceItem foo = ChoiceItem(map_from_item);
             
-            qDebug() << "--- next in this choice group ---- ";
-            
+            qDebug() << "<--- Next entry in this choice group ----> ";
             
         }
     
     }
 
 }
+
+
+    
