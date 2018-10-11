@@ -19,6 +19,7 @@
  *   SPDX-License-Identifier: GPLv3+
  */
 #include "ChoiceItem.h"
+#include <QDebug>
 
 ChoiceItem::ChoiceItem()
 {
@@ -37,7 +38,14 @@ ChoiceItem::ChoiceItem(const QVariantMap& map) :
     
     
     
+    
 {
+    qDebug() << "   - item: " << m_item;
+    qDebug() << "   - icon: " << m_icon;
+    qDebug() << "   - package: " << m_package;
+    qDebug() << "   - name : " << m_name;
+    
+    
     // these validity checks are educated guesses at the moment, without
     // knowing the real requirements and conditions
     if (m_name.isEmpty()) {

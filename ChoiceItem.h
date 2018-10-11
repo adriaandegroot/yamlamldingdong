@@ -50,6 +50,7 @@ public:
 
     
 private:
+    QVariantList m_items;
     bool m_isValid;
     QString m_item;
     QString m_icon;

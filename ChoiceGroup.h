@@ -56,8 +56,11 @@ public:
 private:
     QString m_title;
     QString m_variable;
-    QStringList m_items;
+    QVariantList m_items;
     bool m_isValid;
+    QString m_name;
+    QString m_icon;
+    QString m_package;
     
     // and a list of vector of ChoiceItems
 } ;

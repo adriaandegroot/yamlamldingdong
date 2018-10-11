@@ -35,20 +35,33 @@ ChoiceGroup::ChoiceGroup(const QVariantMap& map) :
     m_title(getStringValue(map, "title")),
     m_variable(getStringValue(map, "variable"))
     
+    
+    
 {
+   
+    
+    qDebug() << "TITLE: " << m_title;
+    qDebug() << "VARIABLE: " << m_variable;
+    
+    
     if (map.contains("items") && map["items"].canConvert<QVariantList>()) {
         QVariantList items = map["items"].toList();
+
         
         for (const auto& item : items) {
             
             // check that item: is it a really a map?
             
-            QVariantMap map_from_item;
+            QVariantMap map_from_item =item.toMap(); 
             
-            QStringList(append(ChoiceItem(map_from_item)));
+          
+            ChoiceItem foo = ChoiceItem(map_from_item);
+            
+            qDebug() << "--- next in this choice group ---- ";
+            
+            
         }
-    }
     
-    // validity checking (very condensed and efficient)
-    m_isValid = !m_title.isEmpty() && !m_items.isEmpty();
+    }
+
 }
