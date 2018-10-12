@@ -49,7 +49,7 @@ ChoiceItem::ChoiceItem(const QVariantMap& map) :
     
     // we copied Item to Name and it's still blank - no name!
     if (m_name.isEmpty()) {
-        std::cerr << "*** FAILURE: Name and Item are both blank - cannot continue.***\n" << endl;
+        std::cerr << "*** FAILURE: Name and Item are both blank - cannot continue.***\n" << std::endl;
         m_isValid = false;
     }
     
@@ -59,7 +59,7 @@ ChoiceItem::ChoiceItem(const QVariantMap& map) :
     }
     
     if (m_package.isEmpty()) {
-        std::cerr << "* WARNING - 'Package entry is empty... verify if it is needed.*\n" << endl;
+        std::cerr << "* WARNING - 'Package entry is empty... verify if it is needed.*\n" << std::endl;
     }
     
     
