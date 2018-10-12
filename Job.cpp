@@ -19,8 +19,10 @@
  *   SPDX-License-Identifier: GPLv3+
  */
 #include "Job.h"
+#include "ChoiceGroup.h"
 
 #include <iostream>
+#include <QDebug>
 
 Job::Job()
 {
@@ -29,6 +31,18 @@ Job::Job()
 void
 Job::setConfigurationMap( const QVariantMap& map )
 {
+    
+    QVariantList choiceList = map["choices"].toList();
+
+    for (auto it : choiceList) {
+        
+        QVariantMap itMap = it.toMap();
+        
+        ChoiceGroup c(itMap);
+        
+    }
+    
+
 }
 
 void
@@ -37,4 +51,7 @@ Job::debug() const
     std::cerr << "Job configuration:\n";
     
     // TODO: actually print debugging
+    
+    
+    
 }

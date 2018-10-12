@@ -32,6 +32,8 @@
 #include "Job.h"
 #include "YamlUtils.h"
 
+#include "ChoiceGroup.h"
+
 int main(int argc, char **argv)
 {
     QCoreApplication a( argc, argv );
@@ -45,6 +47,11 @@ int main(int argc, char **argv)
             Job j;
             j.setConfigurationMap( map );
             j.debug();
+
+            //ChoiceGroup cg;
+            
+            
+            
             return 0;
         }
         else
@@ -52,6 +59,8 @@ int main(int argc, char **argv)
             std::cerr << "Could not load " << argv[1] << std::endl;
             return 1;
         }
+
+
     }
         
     std::cerr << "Usage: " << argv[0] << " <filename>\n\n"

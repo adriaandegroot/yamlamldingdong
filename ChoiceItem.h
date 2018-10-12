@@ -22,16 +22,39 @@
 class QWidget;
 
 #include <QVariantMap>
+#include <QString>
 
 /** @brief Data class for a single choice item
  * 
  * Created from a variant map which is extracted from YAML.
  */
+
+    // grab the value of (k) from map (m), otherwise return zilch, which will trigger an error
+    static QString getStringValue(const QVariantMap& m, const QString& k)
+    {
+        if (m.contains(k)) {
+            return m[k].toString();
+        } else {
+            return QString();
+        }
+    }
+
+    
 class ChoiceItem
 {
 public:
     ChoiceItem();
     ChoiceItem( const QVariantMap& );
-
+    
+private:
+    QVariantList m_items;
+    bool m_isValid;
+    QString m_item;
+    QString m_icon;
+    QString m_package;
+    QString m_name;
+    QString m_title;
+    
+    
     // QWidget *makeWidget( QWidget *parent );
 } ;

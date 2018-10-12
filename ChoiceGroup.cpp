@@ -18,14 +18,51 @@
  * 
  *   SPDX-License-Identifier: GPLv3+
  */
+#include <iostream>
 #include "ChoiceGroup.h"
+#include "ChoiceItem.h"
+#include <QDebug>
 
+// invalid constructor (so why do we include it?)
 ChoiceGroup::ChoiceGroup()
 {
+}                                                                                                                               
+
+ChoiceGroup::ChoiceGroup(const QVariantMap& map) :
+
+    m_title(getStringValue(map, "title")),
+    m_variable(getStringValue(map, "variable"))
+    
+   
+    
+{
+   
+    qDebug() << "TITLE: " << m_title;
+    qDebug() << "VARIABLE: " << m_variable;
+    
+     if (m_variable.isEmpty()) {
+        std::cerr << "*** ERROR: Associated variable is not supplied. Cannot continue. ***";
+        qDebug() << "Need to quit somehow -- can't use this data.";
+    }
+    
+    if (map.contains("items") && map["items"].canConvert<QVariantList>()) {
+        QVariantList items = map["items"].toList();
+
+        for (const auto& item : items) {
+            
+            QVariantMap map_from_item =item.toMap(); 
+            
+            // "append" was here in the email... append to what?
+            // the ChoiceItem is several data types in one...?
+            ChoiceItem foo = ChoiceItem(map_from_item);
+            
+            qDebug() << "<--- Next entry in this choice group ----> ";
+            
+        }
+    
+    }
+
 }
 
-ChoiceGroup::ChoiceGroup( const QVariantMap& )
-{
-    // Extract title
-    // Extract list of items
-}
+
+    

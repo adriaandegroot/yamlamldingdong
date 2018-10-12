@@ -23,20 +23,35 @@ class QWidget;
 
 #include <QString>
 #include <QVariantMap>
+#include <QStringList>
+
+
+
 
 /** @brief Data class for a group of related choices
  * 
  * Created from a variant map which is extracted from YAML.
  */
-class ChoiceGroup
-{
-public:
-    ChoiceGroup();
-    ChoiceGroup( const QVariantMap& );
 
-    // QWidget *makeWidget( QWidget *parent );
+class ChoiceGroup
+
+{
+
+public:
+    
+    ChoiceGroup();    
+    ChoiceGroup(const QVariantMap&);
     
 private:
     QString m_title;
+    QString m_variable;
+    QVariantList m_items;
+    bool m_isValid;
+    QString m_name;
+    QString m_icon;
+    QString m_package;
+    
+    
+    
     // and a list of vector of ChoiceItems
 } ;
