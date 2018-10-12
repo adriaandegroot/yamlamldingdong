@@ -40,8 +40,6 @@ Job::setConfigurationMap( const QVariantMap& map )
         
         ChoiceGroup c(itMap);
         
-        
-        
     }
     
 
@@ -53,4 +51,7 @@ Job::debug() const
     std::cerr << "Job configuration:\n";
     
     // TODO: actually print debugging
+    
+    
+    
 }

@@ -33,11 +33,17 @@ ChoiceGroup::ChoiceGroup(const QVariantMap& map) :
     m_title(getStringValue(map, "title")),
     m_variable(getStringValue(map, "variable"))
     
+   
+    
 {
    
     qDebug() << "TITLE: " << m_title;
     qDebug() << "VARIABLE: " << m_variable;
     
+     if (m_variable.isEmpty()) {
+        std::cerr << "*** ERROR: Associated variable is not supplied. Cannot continue. ***";
+        qDebug() << "Need to quit somehow -- can't use this data.";
+    }
     
     if (map.contains("items") && map["items"].canConvert<QVariantList>()) {
         QVariantList items = map["items"].toList();
