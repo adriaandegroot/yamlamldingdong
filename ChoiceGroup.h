@@ -18,6 +18,8 @@
  * 
  *   SPDX-License-Identifier: GPLv3+
  */
+#ifndef YDD_CHOICEGROUP_H
+#define YDD_CHOICEGROUP_H
 
 class QWidget;
 
@@ -45,3 +47,5 @@ private:
     QString m_icon;
     QString m_package;
 } ;
+
+#endif
