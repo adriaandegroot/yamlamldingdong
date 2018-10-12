@@ -23,7 +23,8 @@
 #include "ChoiceItem.h"
 #include <QDebug>
 
-ChoiceItem::ChoiceItem()
+ChoiceItem::ChoiceItem() :
+    m_isValid( false )
 {
 }
 
