@@ -42,7 +42,6 @@ Job::setConfigurationMap( const QVariantMap& map )
         
     }
     
-
 }
 
 void

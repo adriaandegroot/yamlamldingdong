@@ -33,8 +33,6 @@ ChoiceGroup::ChoiceGroup(const QVariantMap& map) :
     m_title(getStringValue(map, "title")),
     m_variable(getStringValue(map, "variable"))
     
-   
-    
 {
    
     qDebug() << "TITLE: " << m_title;
@@ -63,6 +61,3 @@ ChoiceGroup::ChoiceGroup(const QVariantMap& map) :
     }
 
 }
-
-
-    

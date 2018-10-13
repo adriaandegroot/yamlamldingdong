@@ -74,5 +74,3 @@ ChoiceItem::ChoiceItem(const QVariantMap& map) :
     }
     
 }
-
-

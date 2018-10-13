@@ -25,9 +25,6 @@ class QWidget;
 #include <QVariantMap>
 #include <QStringList>
 
-
-
-
 /** @brief Data class for a group of related choices
  * 
  * Created from a variant map which is extracted from YAML.
@@ -50,8 +47,6 @@ private:
     QString m_name;
     QString m_icon;
     QString m_package;
-    
-    
-    
+
     // and a list of vector of ChoiceItems
 } ;

@@ -50,8 +50,6 @@ int main(int argc, char **argv)
 
             //ChoiceGroup cg;
             
-            
-            
             return 0;
         }
         else
