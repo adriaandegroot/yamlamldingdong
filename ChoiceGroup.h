@@ -41,18 +41,33 @@ public:
     
     ChoiceGroup();    
     ChoiceGroup(const QVariantMap&);
+
+/** Constructors/accessors for individual parameters
+ * 
+ */
+    bool valid() const { return m_isValid; }
+    QString item() const { return m_item; }
+    QString title() const { return m_title; }
+    QString variable() const { return m_variable; }
+    QString icon() const { return m_icon; } 
+    QString name() const { return m_name; }
+    QString package() const { return m_package; }
+   
+    QList<ChoiceItem> getChoices();
     
 private:
+    bool m_isValid;
+    QString m_item;
     QString m_title;
     QString m_variable;
-    bool m_isValid;
+    
     QString m_name;
     QString m_icon;
     QString m_package;
 
-
     // and a list of vector of ChoiceItems
-
+    // This now makes perfect sense... it's QList<T>, but T is a ChoiceItem
+    // instead of something "ordinary" like a QVariant
     QList<ChoiceItem> m_items;
 
 } ;

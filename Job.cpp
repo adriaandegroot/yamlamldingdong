@@ -42,6 +42,8 @@ Job::setConfigurationMap( const QVariantMap& map )
         
     }
     
+    qDebug() << "==== Next 'entry' within ChoiceGroup ====";
+    
 }
 
 void
@@ -51,6 +53,7 @@ Job::debug() const
     
     // TODO: actually print debugging
     
+    // TODO: Maybe most of the current qDebug calls will end up here?
     
     
 }

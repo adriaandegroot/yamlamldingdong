@@ -34,7 +34,6 @@ ChoiceItem::ChoiceItem(const QVariantMap& map) :
    // I will work on the delegated constructors once I grasp the concept.
    // Right now, it's pure black magic. Although I have some theories.
     
-    m_isValid(true),
     m_item(getStringValue(map, "item")),
     m_icon(getStringValue(map, "icon")),
     m_package(getStringValue(map, "package")),

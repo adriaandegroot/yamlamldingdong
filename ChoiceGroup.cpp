@@ -35,26 +35,65 @@ ChoiceGroup::ChoiceGroup(const QVariantMap& map) :
     
 {
    
+    qDebug() << "==== Start Next Top-Level ChoiceGroup ====";
+    
     qDebug() << "TITLE: " << m_title;
     qDebug() << "VARIABLE: " << m_variable;
     
      if (m_variable.isEmpty()) {
         std::cerr << "*** ERROR: Associated variable is not supplied. Cannot continue. ***";
-        qDebug() << "Need to quit somehow -- can't use this data.";
     }
     
     if (map.contains("items") && map["items"].canConvert<QVariantList>()) {
         QVariantList items = map["items"].toList();
 
         for (const auto& item : items) {
-            
+            qDebug() << "<--- A ChoiceItem within the ChoiceGroup ----> ";
             QVariantMap map_from_item =item.toMap(); 
             
-            // "append" was here in the email... append to what?
-            // the ChoiceItem is several data types in one...?
-            ChoiceItem foo = ChoiceItem(map_from_item);
+            m_items.append(ChoiceItem(map_from_item));
             
-            qDebug() << "<--- Next entry in this choice group ----> ";
+            //** VALIDITY CHECKING **//
+            // these validity checks are educated guesses at the moment, without
+            // knowing the real requirements and conditions
+            m_isValid = true;
+            m_name = map_from_item["name"].toString();
+            m_item = map_from_item["item"].toString();
+            m_icon = map_from_item["icon"].toString();
+            m_package = map_from_item["package"].toString();
+            
+            if (m_name.isEmpty()) {
+                m_name = m_item;
+            }
+            
+            // we copied Item to Name and it's still blank - no name!
+            if (m_name.isEmpty()) {
+                std::cerr << "*** FAILURE: Name and Item are both blank - cannot continue.***\n" << std::endl;
+                m_isValid = false;
+            }
+            
+            // use a generic icon if one isn't specified
+            if (m_icon.isEmpty()) {
+                m_icon = "/usr/share/icons/generic.png";
+            }
+            
+            if (m_package.isEmpty()) {
+                std::cerr << "* WARNING - 'Package entry is empty... verify if it is needed.*\n" << std::endl;
+            }
+            
+            
+            qDebug() << "   - item: " << m_item;
+            qDebug() << "   - icon: " << m_icon;
+            qDebug() << "   - package: " << m_package;
+            qDebug() << "   - name : " << m_name;
+            
+            if (!m_isValid) {
+                qDebug() << "=-=-=-=-=-=-=-=-=-=-=-=-=-=";
+                qDebug() << "This file has invalid data.";
+                qDebug() << "=-=-=-=-=-=-=-=-=-=-=-=-=-=";
+            }
+            
+            
             
         }
     
