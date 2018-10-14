@@ -39,38 +39,17 @@ ChoiceItem::ChoiceItem(const QVariantMap& map) :
     m_package(getStringValue(map, "package")),
     m_name(getStringValue(map, "name"))
     
+    
+    
 {
+    debugChoiceItem();
 
-    // these validity checks are educated guesses at the moment, without
-    // knowing the real requirements and conditions
-    if (m_name.isEmpty()) {
-        m_name = m_item;
-    }
-    
-    // we copied Item to Name and it's still blank - no name!
-    if (m_name.isEmpty()) {
-        std::cerr << "*** FAILURE: Name and Item are both blank - cannot continue.***\n" << std::endl;
-        m_isValid = false;
-    }
-    
-    // use a generic icon if one isn't specified
-    if (m_icon.isEmpty()) {
-        m_icon = "/usr/share/icons/generic.png";
-    }
-    
-    if (m_package.isEmpty()) {
-        std::cerr << "* WARNING - 'Package entry is empty... verify if it is needed.*\n" << std::endl;
-    }
-    
-    
-    qDebug() << "   - item: " << m_item;
-    qDebug() << "   - icon: " << m_icon;
-    qDebug() << "   - package: " << m_package;
-    qDebug() << "   - name : " << m_name;
-    
-    if (!m_isValid) {
-        qDebug() << "This file has invalid data. We need to quit somehow, but I'll wait for guidance" \
-                 << " on the proper way to go about that.";
-    }
+}
+
+void ChoiceItem::debugChoiceItem() {
+    qDebug() << "    item: " << m_item;
+    qDebug() << "    icon: " << m_icon;
+    qDebug() << " package: " << m_package;
+    qDebug() << "    name: " << m_name;
     
 }

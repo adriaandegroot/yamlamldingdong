@@ -63,6 +63,8 @@ private:
     QString m_package;
     QString m_name;
     QString m_title;
+    
+    void debugChoiceItem();
 } ;
 
 #endif
