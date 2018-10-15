@@ -33,19 +33,33 @@ ChoiceItem::ChoiceItem(const QVariantMap& map) :
 
    // I will work on the delegated constructors once I grasp the concept.
    // Right now, it's pure black magic. Although I have some theories.
-    
+
+    m_isValid(true),
     m_item(getStringValue(map, "item")),
     m_icon(getStringValue(map, "icon")),
     m_package(getStringValue(map, "package")),
     m_name(getStringValue(map, "name"))
     
+{   
+    // validity checks
+    if (m_item.isEmpty()) {
+        m_isValid = false;
+    }
     
+    if (m_name.isEmpty() && !m_item.isEmpty()) {
+        m_name = m_item;
+    } else {
+        m_isValid = false;
+    }
     
-{
+    //No need to examine icon or package, as they are optional
+    
+    // this doesn't really belong in the constructor (does it?)
+    // but it's temmporary and will go away
     debugChoiceItem();
-
+    
 }
-
+    
 void ChoiceItem::debugChoiceItem() {
     qDebug() << "    item: " << m_item;
     qDebug() << "    icon: " << m_icon;

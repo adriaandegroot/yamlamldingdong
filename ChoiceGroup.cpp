@@ -30,6 +30,7 @@ ChoiceGroup::ChoiceGroup()
 
 ChoiceGroup::ChoiceGroup(const QVariantMap& map) :
 
+    m_isValid(true),
     m_title(getStringValue(map, "title")),
     m_variable(getStringValue(map, "variable"))
     
@@ -51,6 +52,16 @@ ChoiceGroup::ChoiceGroup(const QVariantMap& map) :
             
         }
     
+    }
+    
+    // Validation checks - in the wrong place? Can't check if "items" is empty,
+    // they need a chance to get filled - right?
+    if (m_title.isEmpty()) {
+        m_isValid = false;
+    }
+    
+    if (m_items.isEmpty()) {
+        m_isValid = false;
     }
 
 }

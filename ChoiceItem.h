@@ -53,8 +53,10 @@ public:
     ChoiceItem( const QVariantMap& );
     
     bool isValid() const { return m_isValid; }
-    
-    // TODO: accessors for the other fields
+    QString getItem() const { return m_item; }
+    QString getIcon() const { return m_icon; }
+    QString getPackage() const { return m_package; }
+    QString getName() const { return m_name; }
     
 private:
     bool m_isValid;
@@ -62,9 +64,9 @@ private:
     QString m_icon;
     QString m_package;
     QString m_name;
-    QString m_title;
     
     void debugChoiceItem();
+
 } ;
 
 #endif
