@@ -50,6 +50,7 @@ ChoiceItem::ChoiceItem(const QVariantMap& map) :
     if (m_name.isEmpty() && !m_item.isEmpty()) {
         m_name = m_item;
     } else {
+        qWarning() << "This item @" << (void *)this << "is invalid because of the reasons.";
         m_isValid = false;
     }
     
