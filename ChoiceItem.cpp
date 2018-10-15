@@ -43,7 +43,7 @@ ChoiceItem::ChoiceItem(const QVariantMap& map) :
 {   
     // validity checks
     if (m_item.isEmpty()) {
-        qWarning() << "m_item is empty, so item is invalid.";
+        qWarning() << "m_item is empty, so item is invalid @" << (void *)this;
         m_isValid = false;
     }
     
