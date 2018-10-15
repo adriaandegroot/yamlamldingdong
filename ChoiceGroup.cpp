@@ -30,6 +30,7 @@ ChoiceGroup::ChoiceGroup()
 
 ChoiceGroup::ChoiceGroup(const QVariantMap& map) :
 
+   
     m_isValid(true),
     m_title(getStringValue(map, "title")),
     m_variable(getStringValue(map, "variable"))
@@ -49,11 +50,17 @@ ChoiceGroup::ChoiceGroup(const QVariantMap& map) :
             QVariantMap map_from_item =item.toMap(); 
             
             m_items.append(ChoiceItem(map_from_item));
-            
         }
-    
+     
+        for (const auto& choice : m_items) {
+            if (!choice.isValid()) {
+                qDebug() << "### This ChoiceGroup is declared invalid due to an invalid ChoiceItem ###";
+                //m_isValid = false; ////// (intentionally remmed out so the code won't fully quit in Job.cpp
+                }
+        }
+     
     }
-    
+     
     // Validation checks - in the wrong place? Can't check if "items" is empty,
     // they need a chance to get filled - right?
     if (m_title.isEmpty()) {
@@ -63,5 +70,7 @@ ChoiceGroup::ChoiceGroup(const QVariantMap& map) :
     if (m_items.isEmpty()) {
         m_isValid = false;
     }
-
+    
 }
+
+
