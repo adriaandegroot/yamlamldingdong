@@ -41,8 +41,11 @@ Job::setConfigurationMap( const QVariantMap& map )
         ChoiceGroup c(itMap);
         
         if (!c.valid()) {
-            std::cerr << "An invalid ChoiceGroup was found in the input file. Aborting.\n\n";
-            exit(1);
+            std::cerr << "\n";
+            std::cerr << "***\n";
+            std::cerr << "* An invalid ChoiceGroup was found in the input file.\n";
+            std::cerr << "* We should probably fail gracefully here.\n";
+            std::cerr << "***\n\n";
         }
         
     }
