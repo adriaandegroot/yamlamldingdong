@@ -54,7 +54,8 @@ ChoiceGroup::ChoiceGroup(const QVariantMap& map) :
      
         for (const auto& choice : m_items) {
             if (!choice.isValid()) {
-                qDebug() << "### This ChoiceGroup is declared invalid due to an invalid ChoiceItem ###";
+                qWarning() << "### This ChoiceGroup is declared invalid due to an invalid ChoiceItem ###";
+                qWarning() << "  # ChoiceItem @" << (void *)&choice << choice.getItem();
                 //m_isValid = false; ////// (intentionally remmed out so the code won't fully quit in Job.cpp
                 }
         }
