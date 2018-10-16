@@ -41,14 +41,12 @@ ChoiceItem::ChoiceItem(const QVariantMap& map) :
     m_name(getStringValue(map, "name"))
     
 {   
-    // validity checks
-    if (m_item.isEmpty()) {
-        m_isValid = false;
-    } else if (m_name.isEmpty() && !m_item.isEmpty()) {
-        m_name = m_item;
-    } else if (m_name.isEmpty() && m_item.isEmpty()) {
-        m_isValid = false;
-    }
+    // Data fixups -- handle incomplete data where we can fill in some bits
+	if (m_name.isEmpty()) m_name=m_item;
+
+	// Data validation
+	if (m_item.isEmpty()) m_isValid=false;
+	if (m_name.isEmpty()) m_isValid=false;
     
     //No need to examine icon or package, as they are optional
     
