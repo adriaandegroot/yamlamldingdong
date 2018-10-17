@@ -8,6 +8,8 @@ if( POLICY CMP0071 )
     cmake_policy( SET CMP0071 NEW )
 endif()
 set( CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/CMakeModules" )
+set(CMAKE_AUTOMOC ON)
+
 
 ### C++ versioning and standards
 #
@@ -38,7 +40,7 @@ add_executable( yddx
     Job.cpp
     YamlUtils.cpp
     qml.qrc
-    )
+        BackEnd.cpp)
 target_include_directories( yddx
     PRIVATE
     ${YAMLCPP_INCLUDE_DIR}

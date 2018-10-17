@@ -27,9 +27,6 @@
  */
 
 #include <iostream>
-
-#include <QCoreApplication>
-
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QDebug>
@@ -38,10 +35,22 @@
 #include "YamlUtils.h"
 
 #include "ChoiceGroup.h"
+#include "BackEnd.h"
+
+
 
 int main(int argc, char **argv)
 {
     QGuiApplication a(argc, argv);
+
+    qmlRegisterType<BackEnd>("io.qt.examples.backend", 1, 0, "BackEnd");
+
+
+    QQmlApplicationEngine engine;
+    //engine.load(QUrl("qrc:/main.qml"));
+    engine.load(QUrl::fromLocalFile("../main.qml"));
+
+
 
     qDebug() << argv[1];
 
@@ -56,9 +65,7 @@ int main(int argc, char **argv)
 
             //ChoiceGroup cg;
 
-            QQmlApplicationEngine engine;
-            //engine.load(QUrl("qrc:/main.qml"));
-            engine.load(QUrl::fromLocalFile("../main.qml"));
+
 
             return a.exec();
         }
@@ -78,4 +85,6 @@ int main(int argc, char **argv)
         << "Parses YAML document <filename> and does stuff with it.\n";
         
     return 1;
+
+
 }

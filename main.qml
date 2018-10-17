@@ -1,33 +1,22 @@
-import QtQuick 2.10
-import QtQuick.Controls 2.3
+import QtQuick 2.6
+import QtQuick.Controls 2.0
+import io.qt.examples.backend 1.0
 
 ApplicationWindow {
-    visible: true
-    width: 640
+    id: root
+    width: 300
     height: 480
-    title: qsTr("Tabs")
+    visible: true
 
-    SwipeView {
-        id: swipeView
-        anchors.fill: parent
-        currentIndex: tabBar.currentIndex
-
-        Page1Form {
-        }
-
-        Page2Form {
-        }
+    BackEnd {
+        id: backend
     }
 
-    footer: TabBar {
-        id: tabBar
-        currentIndex: swipeView.currentIndex
+    TextField {
+        text: backend.userName
+        placeholderText: qsTr("User name")
+        anchors.centerIn: parent
 
-        TabButton {
-            text: qsTr("Page 1")
-        }
-        TabButton {
-            text: qsTr("Page 2")
-        }
+        onTextChanged: backend.userName = text
     }
 }
