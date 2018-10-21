@@ -1,17 +1,19 @@
-#include "Widget.h"
+#include "Yddx.h"
+#include <QQmlApplicationEngine>
 #include <QDebug>
 
-Widget::Widget(QObject *parent) :
+Yddx::Yddx(QObject *parent) :
         QObject(parent)
 {
+        
 }
 
-QString Widget::userName()
+QString Yddx::userName()
 {
     return m_userName;
 }
 
-void Widget::setUserName(const QString &userName)
+void Yddx::setUserName(const QString &userName)
 {
     if (userName == m_userName)
         return;

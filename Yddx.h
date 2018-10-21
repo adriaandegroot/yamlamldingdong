@@ -1,16 +1,16 @@
-#ifndef WIDGET_H
-#define WIDGET_H
+#ifndef YDDX_H
+#define YDDX_H
 
 #include <QObject>
 #include <QString>
 
-class Widget : public QObject
+class Yddx : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString userName READ userName WRITE setUserName NOTIFY userNameChanged)
 
 public:
-    explicit Widget(QObject *parent = nullptr);
+    explicit Yddx(QObject *parent = nullptr);
 
     QString userName();
     void setUserName(const QString &userName);
@@ -22,4 +22,4 @@ private:
     QString m_userName;
 };
 
-#endif // WIDGET_H
+#endif // YDDX_H

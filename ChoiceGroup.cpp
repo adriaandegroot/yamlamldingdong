@@ -64,26 +64,25 @@ ChoiceGroup::ChoiceGroup(const QVariantMap& map) :
             validateItems(map_from_item);
             
         }
-/*     
+     /*
         for (const auto& choice : m_items) {
             if (!choice.isValid()) {
                 qDebug() << "### This ChoiceGroup is declared invalid due to an invalid ChoiceItem ###";
                 m_isValid = false;
         }
-*/     
+     */
     
-   /* 
-    }
+   
     // Validation checks - in the wrong place? Can't check if "items" is empty,
     // they need a chance to get filled - right?
-    if (m_title.isEmpty()) {
-        m_isValid = false;
-    }
+   // if (m_title.isEmpty()) {
+   //     m_isValid = false;
+   // }
     
-    if (m_items.isEmpty()) {
-        m_isValid = false;
-    }
-*/    
+   // if (m_items.isEmpty()) {
+   //     m_isValid = false;
+   // }
+   
 }
 
 void ChoiceGroup::validateItems(QVariantMap& map) 

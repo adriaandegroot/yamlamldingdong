@@ -1,6 +1,6 @@
 import QtQuick 2.6
 import QtQuick.Controls 2.0
-import org.calamares.widget 1.0
+import org.calamares.yddx 1.0
 
 ApplicationWindow {
     id: root
@@ -8,15 +8,15 @@ ApplicationWindow {
     height: 480
     visible: true
 
-    Widget {
-        id: widget
+    Yddx {
+        id: yddx
     }
 
     TextField {
-        text: widget.userName
+        text: yddx.userName
         placeholderText: qsTr("User name")
         anchors.centerIn: parent
 
-        onTextChanged: widget.userName = text
+        onTextChanged: yddx.userName = text
     }
 }

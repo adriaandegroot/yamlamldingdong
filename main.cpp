@@ -35,22 +35,14 @@
 #include "YamlUtils.h"
 
 #include "ChoiceGroup.h"
-#include "Widget.h"
+#include "Yddx.h"
+
 
 
 
 int main(int argc, char **argv)
 {
     QGuiApplication a(argc, argv);
-
-    qmlRegisterType<Widget>("org.calamares.widget", 1, 0, "Widget");
-
-
-    QQmlApplicationEngine engine;
-    //engine.load(QUrl("qrc:/main.qml"));
-    //engine.load(QUrl::fromLocalFile("../main.qml"));
-
-
 
     qDebug() << argv[1];
 
@@ -62,10 +54,11 @@ int main(int argc, char **argv)
             Job j;
             j.setConfigurationMap(map);
             j.debug();
-
-            //ChoiceGroup cg;
-
-
+            
+           qmlRegisterType<Yddx>("org.calamares.yddx", 1, 0, "Yddx");
+        QQmlApplicationEngine engine;
+        //engine.load(QUrl("qrc:/main.qml"));
+        engine.load(QUrl::fromLocalFile("../main.qml"));    
 
             return a.exec();
         }
