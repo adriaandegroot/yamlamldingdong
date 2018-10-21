@@ -1,17 +1,17 @@
-#include "BackEnd.h"
+#include "Widget.h"
 #include <QDebug>
 
-BackEnd::BackEnd(QObject *parent) :
+Widget::Widget(QObject *parent) :
         QObject(parent)
 {
 }
 
-QString BackEnd::userName()
+QString Widget::userName()
 {
     return m_userName;
 }
 
-void BackEnd::setUserName(const QString &userName)
+void Widget::setUserName(const QString &userName)
 {
     if (userName == m_userName)
         return;
@@ -19,4 +19,5 @@ void BackEnd::setUserName(const QString &userName)
     m_userName = userName;
     emit userNameChanged();
 }
+
 

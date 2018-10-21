@@ -40,7 +40,7 @@ add_executable( yddx
     Job.cpp
     YamlUtils.cpp
     qml.qrc
-        BackEnd.cpp)
+    Widget.cpp)
 target_include_directories( yddx
     PRIVATE
     ${YAMLCPP_INCLUDE_DIR}

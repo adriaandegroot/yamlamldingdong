@@ -1,16 +1,16 @@
-#ifndef BACKEND_H
-#define BACKEND_H
+#ifndef WIDGET_H
+#define WIDGET_H
 
 #include <QObject>
 #include <QString>
 
-class BackEnd : public QObject
+class Widget : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString userName READ userName WRITE setUserName NOTIFY userNameChanged)
 
 public:
-    explicit BackEnd(QObject *parent = nullptr);
+    explicit Widget(QObject *parent = nullptr);
 
     QString userName();
     void setUserName(const QString &userName);
@@ -22,4 +22,4 @@ private:
     QString m_userName;
 };
 
-#endif // BACKEND_H
+#endif // WIDGET_H

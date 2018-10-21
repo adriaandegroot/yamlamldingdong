@@ -18,28 +18,25 @@
  * 
  *   SPDX-License-Identifier: GPLv3+
  */
+
 #ifndef YDD_CHOICEGROUP_H
 #define YDD_CHOICEGROUP_H
 
-class QWidget;
 
-#include <QList>
-#include <QString>
 #include <QVariantMap>
-#include <QStringList>
-#include "ChoiceItem.h"
+#include <QString>
 
-
-/** @brief Data class for a group of related choices
- * 
- * Created from a variant map which is extracted from YAML.
- */
 class ChoiceGroup
+
 {
 public:
     
     ChoiceGroup();    
     ChoiceGroup(const QVariantMap&);
+    QString m_name;
+    QString m_item;
+    QString m_icon;
+    QString m_package;
 
 /** Constructors/accessors for individual parameters
  * 
@@ -47,18 +44,20 @@ public:
     bool valid() const { return m_isValid; }
     QString title() const { return m_title; }
     QString variable() const { return m_variable; }
+    QVariantList m_items;
     
 private:
     bool m_isValid;
     QString m_title;
     QString m_variable;
-    
+    void validateItems(QVariantMap& map);
+    QString getStringValue(QVariantMap map, QString key);
    
     // and a list of vector of ChoiceItems
     // This now makes perfect sense... it's QList<T>, but T is a ChoiceItem
     // instead of something "ordinary" like a QVariant
     // ... but I can't figure out how to return the value
-    QList<ChoiceItem> m_items;
+    //QList<ChoiceItem> m_items;
 
 } ;
 

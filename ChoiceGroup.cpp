@@ -35,6 +35,7 @@ ChoiceGroup::ChoiceGroup(const QVariantMap& map) :
     m_title(getStringValue(map, "title")),
     m_variable(getStringValue(map, "variable"))
     
+    
 {
    
     qDebug() << "==== Start Next Top-Level ChoiceGroup ====";
@@ -42,24 +43,36 @@ ChoiceGroup::ChoiceGroup(const QVariantMap& map) :
     qDebug() << "TITLE: " << m_title;
     qDebug() << "VARIABLE: " << m_variable;
     
+    QVariantList items;
+    
     if (map.contains("items") && map["items"].canConvert<QVariantList>()) {
-        QVariantList items = map["items"].toList();
+        items = map["items"].toList();
+    }
+        
+    qDebug() << "ITEMS: " << items;    
+        
+    
+        
+    
+    
+
 
         for (const auto& item : items) {
             qDebug() << "<--- A ChoiceItem within the ChoiceGroup ----> ";
             QVariantMap map_from_item =item.toMap(); 
             
-            m_items.append(ChoiceItem(map_from_item));
+            validateItems(map_from_item);
+            
         }
-     
+/*     
         for (const auto& choice : m_items) {
             if (!choice.isValid()) {
                 qDebug() << "### This ChoiceGroup is declared invalid due to an invalid ChoiceItem ###";
                 m_isValid = false;
         }
-     
-    }
+*/     
     
+   /* 
     }
     // Validation checks - in the wrong place? Can't check if "items" is empty,
     // they need a chance to get filled - right?
@@ -70,7 +83,37 @@ ChoiceGroup::ChoiceGroup(const QVariantMap& map) :
     if (m_items.isEmpty()) {
         m_isValid = false;
     }
-    
+*/    
 }
 
+void ChoiceGroup::validateItems(QVariantMap& map) 
+{
 
+    m_isValid = true;
+    m_item = getStringValue(map, "item");
+    m_icon = getStringValue(map, "icon");
+    m_package = getStringValue(map, "package");
+    m_name = getStringValue(map, "name");
+      
+    // Data fixups -- handle incomplete data where we can fill in some bits
+	if (m_name.isEmpty()) m_name=m_item;
+
+	// Data validation
+	if (m_item.isEmpty()) m_isValid=false;
+	if (m_name.isEmpty()) m_isValid=false;
+    
+    
+        qDebug() << "NAME " << m_name;
+        qDebug() << "ITEM " << m_item;
+        qDebug() << "ICON " << m_icon;
+        qDebug() << "PKG  " << m_package;
+}
+
+QString ChoiceGroup::getStringValue(QVariantMap map, QString key) 
+{
+    if (map.contains(key)) {
+        return map[key].toString();
+    } else {
+        return QString();
+    }
+}

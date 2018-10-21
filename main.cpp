@@ -35,7 +35,7 @@
 #include "YamlUtils.h"
 
 #include "ChoiceGroup.h"
-#include "BackEnd.h"
+#include "Widget.h"
 
 
 
@@ -43,12 +43,12 @@ int main(int argc, char **argv)
 {
     QGuiApplication a(argc, argv);
 
-    qmlRegisterType<BackEnd>("io.qt.examples.backend", 1, 0, "BackEnd");
+    qmlRegisterType<Widget>("org.calamares.widget", 1, 0, "Widget");
 
 
     QQmlApplicationEngine engine;
     //engine.load(QUrl("qrc:/main.qml"));
-    engine.load(QUrl::fromLocalFile("../main.qml"));
+    //engine.load(QUrl::fromLocalFile("../main.qml"));
 
 
 

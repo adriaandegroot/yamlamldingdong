@@ -1,6 +1,6 @@
 import QtQuick 2.6
 import QtQuick.Controls 2.0
-import io.qt.examples.backend 1.0
+import org.calamares.widget 1.0
 
 ApplicationWindow {
     id: root
@@ -8,15 +8,15 @@ ApplicationWindow {
     height: 480
     visible: true
 
-    BackEnd {
-        id: backend
+    Widget {
+        id: widget
     }
 
     TextField {
-        text: backend.userName
+        text: widget.userName
         placeholderText: qsTr("User name")
         anchors.centerIn: parent
 
-        onTextChanged: backend.userName = text
+        onTextChanged: widget.userName = text
     }
 }

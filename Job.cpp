@@ -48,6 +48,9 @@ Job::setConfigurationMap( const QVariantMap& map )
             std::cerr << "***\n\n";
         }
         
+       qDebug() << c.title();
+       
+        
     }
     
     qDebug() << "==== Next 'entry' within ChoiceGroup ====";
