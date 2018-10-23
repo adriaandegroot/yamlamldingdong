@@ -23,7 +23,7 @@
 
 #include <iostream>
 #include <QDebug>
-#include <QQmlApplicationEngine>
+
 #include "Yddx.h"
 
 Job::Job()
@@ -50,10 +50,6 @@ Job::setConfigurationMap( const QVariantMap& map )
             std::cerr << "***\n\n";
         }
         
-       
-
-
-       
         
        qDebug() << c.title();
        

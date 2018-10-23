@@ -1,15 +1,18 @@
 #include "Yddx.h"
-#include <QQmlApplicationEngine>
 #include <QDebug>
 
-Yddx::Yddx(QObject *parent) :
-        QObject(parent)
+
+
+
+Yddx::Yddx(QWidget *parent) :
+        KXmlGuiWindow(parent)
+        
 {
         
 }
 
 QString Yddx::userName()
-{
+{ 
     return m_userName;
 }
 

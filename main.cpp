@@ -28,23 +28,20 @@
 
 #include <iostream>
 #include <QGuiApplication>
-#include <QQmlApplicationEngine>
 #include <QDebug>
-
+#include <QQmlApplicationEngine>
 #include "Job.h"
 #include "YamlUtils.h"
-
+#include <QGuiApplication>
 #include "ChoiceGroup.h"
 #include "Yddx.h"
-
+#include <QtWidgets/QApplication>
 
 
 
 int main(int argc, char **argv)
 {
-    QGuiApplication a(argc, argv);
-
-    qDebug() << argv[1];
+    QApplication app(argc, argv);
 
     if ( argc == 2 )
     {
@@ -53,14 +50,12 @@ int main(int argc, char **argv)
         if ( ok ) {
             Job j;
             j.setConfigurationMap(map);
-            j.debug();
+            j.debug();  
             
-           qmlRegisterType<Yddx>("org.calamares.yddx", 1, 0, "Yddx");
-        QQmlApplicationEngine engine;
-        //engine.load(QUrl("qrc:/main.qml"));
-        engine.load(QUrl::fromLocalFile("../main.qml"));    
-
-            return a.exec();
+        
+            
+            
+            return app.exec();
         }
 
         {
@@ -68,9 +63,7 @@ int main(int argc, char **argv)
             return 1;
         }
 
-
-
-
+        
 
     }
         
