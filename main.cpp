@@ -37,6 +37,13 @@
 #include "ChoiceGroup.h"
 #include "Yddx.h"
 
+#include <QQmlComponent>
+#include <QQuickItem>
+#include <QQmlContext>
+#include <QQuickWindow>
+#include <QQuickView>
+#include <QWindow>
+
 
 
 
@@ -55,20 +62,23 @@ int main(int argc, char **argv)
             j.setConfigurationMap(map);
             j.debug();
             
-           qmlRegisterType<Yddx>("org.calamares.yddx", 1, 0, "Yddx");
-        QQmlApplicationEngine engine;
-        //engine.load(QUrl("qrc:/main.qml"));
-        engine.load(QUrl::fromLocalFile("../main.qml"));    
-
+            
+            qmlRegisterType<Yddx>("org.calamares.yddx", 1, 0, "Yddx");
+            
+            QQmlApplicationEngine engine;
+           
+            engine.load(QUrl::fromLocalFile("../main.qml"));
+            engine.rootContext()->setContextProperty("rootObject", QVariant::fromValue(engine.rootObjects().first()));
+            
             return a.exec();
-        }
+
 
         {
             std::cerr << "Could not load " << argv[1] << std::endl;
             return 1;
         }
 
-
+        }
 
 
 
@@ -79,5 +89,7 @@ int main(int argc, char **argv)
         
     return 1;
 
+    
+    
 
 }

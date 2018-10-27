@@ -25,7 +25,7 @@ set( CMAKE_C_STANDARD_REQUIRED ON )
 set( QT_VERSION 5.7.0 )
 set( YAMLCPP_VERSION 0.5.1 )
 
-find_package( Qt5 ${QT_VERSION} CONFIG REQUIRED Core Gui Widgets Qml)
+find_package( Qt5 ${QT_VERSION} CONFIG REQUIRED Core Gui Widgets Qml Quick)
 find_package( YAMLCPP ${YAMLCPP_VERSION} REQUIRED  )
 
 
@@ -49,6 +49,7 @@ target_link_libraries( yddx
     Qt5::Core
     Qt5::Gui
     Qt5::Qml
+    Qt5::Quick
     ${YAMLCPP_LIBRARY}
     )
 

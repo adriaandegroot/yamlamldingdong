@@ -25,9 +25,15 @@
 #include <QDebug>
 #include <QQmlApplicationEngine>
 #include "Yddx.h"
+#include <QtQml>
+#include <QQmlContext>
+#include <QQuickItem>
+#include <QQmlEngine>
 
 Job::Job()
 {
+    
+    
 }
 
 void
@@ -50,7 +56,9 @@ Job::setConfigurationMap( const QVariantMap& map )
             std::cerr << "***\n\n";
         }
         
-       
+        QQmlEngine engine;
+        QQmlContext *context = new QQmlContext(engine.rootContext());
+        context->setProperty("yddx.userName", "Joe Strummer");
 
 
        
@@ -62,9 +70,9 @@ Job::setConfigurationMap( const QVariantMap& map )
     
     qDebug() << "==== Next 'entry' within ChoiceGroup ====";
     
-     
-
+    //QQuickItem output = QQuickItem(*parent = qq);
     
+        
 }
 
 void
