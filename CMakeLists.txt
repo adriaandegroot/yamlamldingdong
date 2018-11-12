@@ -26,22 +26,27 @@ set( YAMLCPP_VERSION 0.5.1 )
 find_package( Qt5 ${QT_VERSION} CONFIG REQUIRED Core Gui Widgets )
 find_package( YAMLCPP ${YAMLCPP_VERSION} REQUIRED )
 
+include_directories( ${YAMLCPP_INCLUDE_DIR} )
+
 ### YDD itself
 #
 #
+add_library(libydd OBJECT ChoiceItem.cpp ChoiceGroup.cpp YamlUtils.cpp)
+target_link_libraries( libydd
+    Qt5::Core
+    ${YAMLCPP_LIBRARY}
+    )
 add_executable( ydd 
     main.cpp 
-    ChoiceItem.cpp
-    ChoiceGroup.cpp
     Job.cpp
-    YamlUtils.cpp
-    )
-target_include_directories( ydd
-    PRIVATE
-    ${YAMLCPP_INCLUDE_DIR}
     )
 target_link_libraries( ydd
+    libydd
     Qt5::Core
     ${YAMLCPP_LIBRARY}
     )
     
+### Graphical applications
+#
+#
+add_subdirectory( yddy )
