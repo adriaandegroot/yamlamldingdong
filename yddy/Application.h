@@ -18,11 +18,16 @@
  * 
  *   SPDX-License-Identifier: GPLv3+
  */
+#ifndef YDDY_APPLICATION_H
+#define YDDY_APPLICATION_H
 
-#include "Application.h"
+#include <QApplication>
 
-int main(int argc, char** argv)
+class Application : public QApplication
 {
-    Application a(argc, argv);
-    return a.exec();
-}
+    Q_OBJECT
+public:
+    Application(int argc, char** argv);
+};
+
+#endif

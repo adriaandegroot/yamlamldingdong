@@ -19,10 +19,27 @@
  *   SPDX-License-Identifier: GPLv3+
  */
 
-#include "Application.h"
+#include "MainWindow.h"
 
-int main(int argc, char** argv)
+#include <QPushButton>
+#include <QLabel>
+#include <QVBoxLayout>
+
+MainWindow::MainWindow() : QMainWindow(nullptr)
 {
-    Application a(argc, argv);
-    return a.exec();
+    QWidget*w = new QWidget(this);
+    setCentralWidget(w);
+    
+    QBoxLayout* layout = new QVBoxLayout;
+    w->setLayout(layout);
+    
+    layout->addWidget(new QLabel(QString("Derp")));
+    
+    QPushButton* b = new QPushButton(QString("Quit"));
+    layout->addWidget(b);
+    connect(b, &QPushButton::clicked, this, &MainWindow::quit);
+}
+
+MainWindow::~MainWindow()
+{
 }

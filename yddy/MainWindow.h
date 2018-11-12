@@ -19,10 +19,20 @@
  *   SPDX-License-Identifier: GPLv3+
  */
 
-#include "Application.h"
+#ifndef YDDY_MAINWINDOW_H
+#define YDDY_MAINWINDOW_H
 
-int main(int argc, char** argv)
+#include <QMainWindow>
+
+class MainWindow : public QMainWindow
 {
-    Application a(argc, argv);
-    return a.exec();
-}
+    Q_OBJECT
+public:
+    MainWindow();
+    virtual ~MainWindow() override;
+    
+signals:
+    void quit();
+};
+
+#endif

@@ -20,9 +20,12 @@
  */
 
 #include "Application.h"
+#include "MainWindow.h"
 
-int main(int argc, char** argv)
+Application::Application(int argc, char** argv) : QApplication(argc, argv)
 {
-    Application a(argc, argv);
-    return a.exec();
+    auto* w = new MainWindow();
+    QObject::connect(w, &MainWindow::quit, this, &QApplication::quit);
+    
+    w->show();
 }

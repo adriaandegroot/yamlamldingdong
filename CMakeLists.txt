@@ -8,6 +8,7 @@ if( POLICY CMP0071 )
     cmake_policy( SET CMP0071 NEW )
 endif()
 set( CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/CMakeModules" )
+set( CMAKE_AUTOMOC ON )
 
 ### C++ versioning and standards
 #
